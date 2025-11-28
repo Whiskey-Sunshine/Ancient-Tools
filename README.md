@@ -116,6 +116,35 @@
 [Version 1.0.0](https://github.com/TaskaRaine/Ancient-Tools/releases/download/1.0.0/AncientTools_V1.0.0.zip)
 
 ### Change Log
+#### Version 1.6.0
+Added some networking/packet handling when clients join the server for config parity. HOPEFULLY this solves the common crash with Utility.ModConfig.ReadConfig()
+
+Fixed an issue that prevented the chambersticks from being placeable.
+
+Fixed an issue that prevented bear hides from being interactable on water, making it impossible to create the bear hide sacks.
+
+Ancient Tools tool molds can now be fired in the bee kiln for many different coloured molds, matching vanilla mold colour options.
+
+CarryOn compatibility has been updated to allow all the new pitch and salve pot variants to be carried.
+
+Adze strip and barrel carve interactions are now removed in the UI when In Dappled Groves is installed, as per VinterNacht's request.
+
+#### Version 1.6.0-pre.6
+Fixed a crash that would occur in BlockBehaviorCarveLogBarrel when interacting with logs when other behaviors were being processed. Properly, this time, hopefully. 
+
+Pitch can once again be used to seal crocks.
+
+Fixed an issue where chopping bark stacks with an axe would result in animation getting stuck and no further interaction was possible.
+
+Removed ball pitch as a possible sealer for log barrels in the block interaction UI. It was only ever intended to accept the stick variant.
+
+#### Version 1.6.0-pre.5 
+Fixed an issue where the final stage of crafting pitch would result in a '?' block or a pitch pot that cannot be interacted with.
+
+Fixed an issue where halite stone and marble stones could not be ground down in the mortar.
+
+Fixed an issue where right clicking logs with an empty hand would throw an exception.
+
 #### Version 1.6.0-pre.4
 Added a simple guide for adze stripping, which details how to create log barrels. More will likely be added to this another time.
 

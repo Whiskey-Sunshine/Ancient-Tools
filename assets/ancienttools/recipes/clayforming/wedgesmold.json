@@ -1,6 +1,7 @@
-﻿	{
-	ingredient: { type: "item", code: "game:clay-*", name: "type", allowedVariants: ["blue", "fire", "red"] },
-	pattern: [[
+﻿{
+	ingredient: { type: "item", code: "game:clay-*", name: "color", allowedVariants: ["blue", "fire", "red"] },
+	pattern: [
+		[
 		"##############",
 		"##############",
 		"##############",
@@ -15,7 +16,7 @@
 		"##############",
 		"##############",
 		"##############",
-	],
+		],
 	[
 		"##############",
 		"##############",
@@ -31,7 +32,8 @@
 		"###___##___###",
 		"##############",
 		"##############",
-	]],
+		]
+	],
 	name: "Wedges Mold",
-	output: { type: "block", code: "toolmoldancienttools-{color}-raw-wedge"  }
+	output: { type: "block", code: "ancienttools:toolmoldancienttools-{color}-raw-wedge"  }
 }

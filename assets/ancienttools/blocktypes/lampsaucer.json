@@ -2,7 +2,7 @@
 	code: "lampsaucer",
 	class: "BlockLampSaucer",
 	behaviorsByType: {
-		"*-up": [ {name: "UnstableFalling", properties: { ignorePlaceTest: true, attachmentArea: { x1: 5, y1: 15, z1: 5, x2: 10, y2: 16, z2: 10 } } }, { name: "RightClickPickup"} ],
+		"*-up": [ {name: "UnstableFalling", properties: { attachmentArea: { x1: 5, y1: 15, z1: 5, x2: 10, y2: 16, z2: 10 } } }, { name: "RightClickPickup"} ],
 		"*": [ { name: "RightClickPickup"} ]
 	},
 	creativeinventory: { "general": ["*-up"], "decorative": ["*-up"], "ancienttools": ["*-up"] },
@@ -16,8 +16,12 @@
 			"east": { x1: 7, y1: 6, z1: 15, x2: 8, y2: 7, z2: 15, rotateY: 270 },
 			"south": { x1: 7, y1: 6, z1: 15, x2: 8, y2: 7, z2: 15, rotateY: 0 },
 			"west": { x1: 7, y1: 6, z1: 15, x2: 8, y2: 7, z2: 15, rotateY: 90 },
+		},
+		allowUnstablePlacementByType: {
+			"*-up": true,
+			"*": false
 		}
-	},
+    },
     variantgroups: [
         { code: "metal", states: ["copper", "brass", "bismuth", "tinbronze", "bismuthbronze", "blackbronze", "molybdochalkos", "gold", "silver", "iron", "meteoriciron", "steel", "electrum", "nickel", "cupronickel"] },
 		{ code: "type", states: ["empty", "candle", "pitch"] },

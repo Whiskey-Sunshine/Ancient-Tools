@@ -14,6 +14,9 @@
     <IntermediateOutputPath>..\..\obj\Release\ancienttools\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net">
+      <HintPath>T:\Vintage Story\VintageStory 1.21.1\Lib\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="VintagestoryAPI">
       <HintPath>$(VINTAGE_STORY)/VintagestoryAPI.dll</HintPath>
       <Private>False</Private>
@@ -54,5 +57,8 @@
     <Content Include="modicon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\ancienttools\patches\compatibility\dappledgroves\interactionremoval\" />
   </ItemGroup>
 </Project>

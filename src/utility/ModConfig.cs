@@ -1,58 +1,65 @@
 ﻿using AncientTools.Config;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Server;
 
 namespace AncientTools.Utility
 {
     class ModConfig
     {
-        private AncientToolsConfig config;
+        public AncientToolsConfig ATConfig { get; set; }
 
-        public void ReadConfig(ICoreAPI api)
+        public void ReadConfig(ICoreAPI api, AncientToolsConfig updatedConfig)
+        {
+            api.World.Config.SetInt("MortarOutputModifier", updatedConfig.MortarOutputModifier);
+            api.World.Config.SetFloat("MortarGrindTime", updatedConfig.MortarGrindTime);
+            api.World.Config.SetBool("AllowMortarGrindablePlaceableWithSneak", updatedConfig.AllowMortarGrindablePlaceableWithSneak);
+            api.World.Config.SetInt("BarkPerLog", updatedConfig.BarkPerLog);
+            api.World.Config.SetDouble("BaseBarkStrippingSpeed", updatedConfig.BaseBarkStrippingSpeed);
+            api.World.Config.SetDouble("BasePrimitiveBarrelCarvingSpeed", updatedConfig.BasePrimitiveBarrelCarvingSpeed);
+            api.World.Config.SetDouble("SalveMixTime", updatedConfig.SalveMixTime);
+            api.World.Config.SetBool("BarkBreadEnabled", updatedConfig.BarkBreadEnabled);
+            api.World.Config.SetBool("DisableVanillaHideCrafting", updatedConfig.DisableVanillaHideCrafting);
+            api.World.Config.SetBool("DisableVanillaHideCraftingRecipeOnly", updatedConfig.DisableVanillaHideCraftingRecipeOnly);
+            api.World.Config.SetBool("DisableVanillaGlue", updatedConfig.DisableVanillaGlue);
+            api.World.Config.SetBool("SalveEnabled", updatedConfig.SalveEnabled);
+            api.World.Config.SetBool("AllowCarvingForResin", updatedConfig.AllowCarvingForResin);
+            api.World.Config.SetFloat("SkinningTime", updatedConfig.SkinningTime);
+            api.World.Config.SetDouble("WaterSackConversionHours", updatedConfig.WaterSackConversionHours);
+            api.World.Config.SetBool("DisableBrainDrops", updatedConfig.DisableBrainDrops);
+            api.World.Config.SetInt("BrainsPerBrainingSolutionCraft", updatedConfig.BrainsPerBrainingSolutionCraft);
+            api.World.Config.SetFloat("BrainedHideSealHours", updatedConfig.BrainedHideSealHours);
+            api.World.Config.SetFloat("BrainedHideSmokingSeconds", updatedConfig.BrainedHideSmokingSeconds);
+            api.World.Config.SetBool("InWorldBeamCraftingOnly", updatedConfig.InWorldBeamCraftingOnly);
+            api.World.Config.SetBool("DisableWedgePickupWireframe", updatedConfig.DisableWedgePickupWireframe);
+            api.World.Config.SetBool("AdzeStrippingOnly", updatedConfig.AdzeStrippingOnly);
+            api.World.Config.SetInt("CandleChamberstickLightLevel", updatedConfig.CandleChamberstickLightLevel);
+            api.World.Config.SetInt("PitchChamberstickLightLevel", updatedConfig.PitchChamberstickLightLevel);
+        }
+        public void ReadConfigServer(ICoreServerAPI api)
         {
             try
             {
-                config = LoadConfig(api);
+                ATConfig = LoadConfig(api);
 
-                if (config == null)
+                if (ATConfig == null)
                 {
                     GenerateConfig(api);
-                    config = LoadConfig(api);
+                    ATConfig = LoadConfig(api);
                 }
                 else
                 {
-                    GenerateConfig(api, config);
+                    GenerateConfig(api, ATConfig);
                 }
             }
             catch
             {
                 GenerateConfig(api);
-                config = LoadConfig(api);
+                ATConfig = LoadConfig(api);
             }
 
-            api.World.Config.SetInt("MortarOutputModifier", config.MortarOutputModifier);
-            api.World.Config.SetFloat("MortarGrindTime", config.MortarGrindTime);
-            api.World.Config.SetBool("AllowMortarGrindablePlaceableWithSneak", config.AllowMortarGrindablePlaceableWithSneak);
-            api.World.Config.SetInt("BarkPerLog", config.BarkPerLog);
-            api.World.Config.SetDouble("BaseBarkStrippingSpeed", config.BaseBarkStrippingSpeed);
-            api.World.Config.SetDouble("BasePrimitiveBarrelCarvingSpeed", config.BasePrimitiveBarrelCarvingSpeed);
-            api.World.Config.SetDouble("SalveMixTime", config.SalveMixTime);
-            api.World.Config.SetBool("BarkBreadEnabled", config.BarkBreadEnabled);
-            api.World.Config.SetBool("DisableVanillaHideCrafting", config.DisableVanillaHideCrafting);
-            api.World.Config.SetBool("DisableVanillaHideCraftingRecipeOnly", config.DisableVanillaHideCraftingRecipeOnly);
-            api.World.Config.SetBool("DisableVanillaGlue", config.DisableVanillaGlue);
-            api.World.Config.SetBool("SalveEnabled", config.SalveEnabled);
-            api.World.Config.SetBool("AllowCarvingForResin", config.AllowCarvingForResin);
-            api.World.Config.SetFloat("SkinningTime", config.SkinningTime);
-            api.World.Config.SetDouble("WaterSackConversionHours", config.WaterSackConversionHours);
-            api.World.Config.SetBool("DisableBrainDrops", config.DisableBrainDrops);
-            api.World.Config.SetInt("BrainsPerBrainingSolutionCraft", config.BrainsPerBrainingSolutionCraft);
-            api.World.Config.SetFloat("BrainedHideSealHours", config.BrainedHideSealHours);
-            api.World.Config.SetFloat("BrainedHideSmokingSeconds", config.BrainedHideSmokingSeconds);
-            api.World.Config.SetBool("InWorldBeamCraftingOnly", config.InWorldBeamCraftingOnly);
-            api.World.Config.SetBool("DisableWedgePickupWireframe", config.DisableWedgePickupWireframe);
-            api.World.Config.SetBool("AdzeStrippingOnly", config.AdzeStrippingOnly);
-            api.World.Config.SetInt("CandleChamberstickLightLevel", config.CandleChamberstickLightLevel);
-            api.World.Config.SetInt("PitchChamberstickLightLevel", config.PitchChamberstickLightLevel);
+            ReadConfig(api, ATConfig);
+
         }
         private AncientToolsConfig LoadConfig(ICoreAPI api)
         {

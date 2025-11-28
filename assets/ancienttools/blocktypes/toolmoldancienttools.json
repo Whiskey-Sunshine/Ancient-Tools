@@ -13,7 +13,7 @@
 		"*": [{name: "UnstableFalling"}],
 	},
 	variantgroups: [
-		{ "code": "color", "states": ["blue", "fire", "black", "brown", "cream", "gray", "orange", "red", "tan"] }
+		{ "code": "color", "states": ["blue", "fire", "black", "brown", "cream", "gray", "orange", "red", "tan"] },
 		{ code:"materialtype", states: ["raw", "fired"] },
 		{ code:"tooltype", states: ["adze", "wedge", "mallet"] }
 	],
@@ -26,6 +26,30 @@
 		"*-tan-raw-*"
 	],
 	attributesByType: {
+		"*-red-raw-*":{
+			beehivekiln:{
+				"0": { "type": "block", "code": "ancienttools:toolmoldancienttools-tan-fired-{tooltype}" },
+				"1": { "type": "block", "code": "ancienttools:toolmoldancienttools-orange-fired-{tooltype}" },
+				"2": { "type": "block", "code": "ancienttools:toolmoldancienttools-red-fired-{tooltype}" },
+				"3": { "type": "block", "code": "ancienttools:toolmoldancienttools-brown-fired-{tooltype}" }
+			}
+		},
+		"*-blue-raw-*":{
+			beehivekiln:{
+				"0": { "type": "block", "code": "ancienttools:toolmoldancienttools-cream-fired-{tooltype}"},
+				"1": { "type": "block", "code": "ancienttools:toolmoldancienttools-gray-fired-{tooltype}"},
+				"2": { "type": "block", "code": "ancienttools:toolmoldancienttools-black-fired-{tooltype}"},
+				"3": { "type": "block", "code": "ancienttools:toolmoldancienttools-black-fired-{tooltype}"}
+			}
+		},
+		"*-fire-raw-*":{
+			beehivekiln:{
+				"0": { "type": "block", "code": "ancienttools:toolmoldancienttools-fire-fired-{tooltype}"},
+				"1": { "type": "block", "code": "ancienttools:toolmoldancienttools-fire-fired-{tooltype}"},
+				"2": { "type": "block", "code": "ancienttools:toolmoldancienttools-fire-fired-{tooltype}"},
+				"3": { "type": "block", "code": "ancienttools:toolmoldancienttools-fire-fired-{tooltype}"}
+			}
+		},
 		"*-fired-adze": {
 			"requiredUnits": 100,
 			"fillHeight": 1,
@@ -79,7 +103,7 @@
 	lightAbsorption: 0,
 	texturesByType: {
 		"*-raw-*": {  all: { base: "game:block/clay/{color}clay" } },
-		"*-fired-*": {  { base: "game:block/clay/hardened/{color}" }, other: { base: "game:block/clay/hardened/{color}" } }
+		"*-fired-*": {  all: { base: "game:block/clay/hardened/{color}" }, other: { base: "game:block/clay/hardened/{color}" } }
 	},
 	shapeByType: {
 		"*-wedge": { "base": "block/clay/mold/{tooltype}" },

@@ -61,7 +61,10 @@ namespace AncientTools.BlockBehaviors
         }
         public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)
         {
-            return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handling).Append(StripLogInteractions);
+            if (!world.Api.ModLoader.IsModEnabled("indappledgroves"))
+                return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handling).Append(StripLogInteractions);
+            else
+                return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handling);
         }
         public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
         {
